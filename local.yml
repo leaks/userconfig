@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  become: yes
+  pre_tasks:
+          - name: update respositories
+            apt: update_cache=yes
+            changed_when: False
+
+  tasks:
+         - include: tasks/packages.yml
+         - include: tasks/users.yml
