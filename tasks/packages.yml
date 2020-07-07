@@ -14,21 +14,21 @@
 - name: Add Teams repo
   apt_repository:
     repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main'
-    filename: teams.list
+    filename: teams
     state: present
     update_cache: yes
 
 - name: Add Microsoft repo
   apt_repository:
     repo: 'deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/10/prod buster main'
-    filename: microsoft-prod.list
+    filename: microsoft-prod
     state: present
     update_cache: yes
 
 - name: Add vscode repo
   apt_repository:
     repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
-    filename: vscode.list
+    filename: vscode
     state: present
     update_cache: yes
 
