@@ -46,3 +46,8 @@
   apt:
     name: code
     state: present
+
+- name: Install dotnetcore 3.1 sdk
+  apt:
+    name: dotnet-sdk-3.1
+    state: present
