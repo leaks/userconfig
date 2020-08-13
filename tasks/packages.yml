@@ -27,7 +27,7 @@
 
 - name: Add vscode repo
   apt_repository:
-    repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main'
+    repo: 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main'
     filename: vscode
     state: present
     update_cache: yes
@@ -51,3 +51,8 @@
   apt:
     name: dotnet-sdk-3.1
     state: present
+
+- name: Install Kerberos User tools
+  apt:
+    name: krb5-user
+    state: latest
