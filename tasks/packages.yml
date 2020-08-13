@@ -9,27 +9,27 @@
 - name: Add Microst gpg key
   apt_key:
    url: "https://packages.microsoft.com/keys/microsoft.asc"
-   state: latest
+   state: present
 
 - name: Add Teams repo
   apt_repository:
     repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main'
     filename: teams
-    state: latest
+    state: present
     update_cache: yes
 
 - name: Add Microsoft repo
   apt_repository:
     repo: 'deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/10/prod buster main'
     filename: microsoft-prod
-    state: latest
+    state: present
     update_cache: yes
 
 - name: Add vscode repo
   apt_repository:
     repo: 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main'
     filename: vscode
-    state: latest
+    state: present
     update_cache: yes
 
 - name: Install Teams
