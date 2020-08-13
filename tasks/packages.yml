@@ -1,7 +1,7 @@
 ---
 - name: Install packages
   apt:
-    state: present
+    state: latest
     name:
       - vim
       - tmux
@@ -9,48 +9,48 @@
 - name: Add Microst gpg key
   apt_key:
    url: "https://packages.microsoft.com/keys/microsoft.asc"
-   state: present
+   state: latest
 
 - name: Add Teams repo
   apt_repository:
     repo: 'deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main'
     filename: teams
-    state: present
+    state: latest
     update_cache: yes
 
 - name: Add Microsoft repo
   apt_repository:
     repo: 'deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/10/prod buster main'
     filename: microsoft-prod
-    state: present
+    state: latest
     update_cache: yes
 
 - name: Add vscode repo
   apt_repository:
     repo: 'deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main'
     filename: vscode
-    state: present
+    state: latest
     update_cache: yes
 
 - name: Install Teams
   apt:
     name: teams
-    state: present
+    state: latest
 
 - name: Install powershell 7
   apt:
     name: powershell
-    state: present
+    state: latest
 
 - name: Install vscode
   apt:
     name: code
-    state: present
+    state: latest
 
 - name: Install dotnetcore 3.1 sdk
   apt:
     name: dotnet-sdk-3.1
-    state: present
+    state: latest
 
 - name: Install Kerberos User tools
   apt:
