@@ -1,0 +1,6 @@
+---
+
+- name: Set shell
+  user:
+    name: matt
+    shell: /usr/bin/zsh

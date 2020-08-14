@@ -7,19 +7,20 @@
       - vim
       - tmux
       - krb5-user
-  when: ansible_distribution == "debian"
+      - zsh
+  when: ansible_distribution == "Debian"
 
 - name: Add Microsoft gpg key
   apt_key:
-  url: "https://packages.microsoft.com/keys/microsoft.asc"
-  state: present
-  when: ansible_distribution == "debian"
+    url: "https://packages.microsoft.com/keys/microsoft.asc"
+    state: present
+  when: ansible_distribution == "Debian"
 
 - name: Add Spotify gpg key
   apt_key:
-  url: "https://download.spotify.com/debian/pubkey.gpg"
-  state: present
-  when: ansible_distribution == "debian"
+    url: "https://download.spotify.com/debian/pubkey.gpg"
+    state: present
+  when: ansible_distribution == "Debian"
 
 - name: Add Teams repo
   apt_repository:
@@ -27,7 +28,7 @@
     filename: teams
     state: present
     update_cache: yes
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Add Microsoft repo
   apt_repository:
@@ -35,7 +36,7 @@
     filename: microsoft-prod
     state: present
     update_cache: yes
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Add vscode repo
   apt_repository:
@@ -43,7 +44,7 @@
     filename: vscode
     state: present
     update_cache: yes
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Add Spotify repo
   apt_repository:
@@ -51,28 +52,34 @@
     filename: spotify
     state: present
     update_cache: yes
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Install Teams
   apt:
     name: teams
     state: present
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Install powershell 7
   apt:
     name: powershell
     state: present
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Install vscode
   apt:
     name: code
     state: present
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
 
 - name: Install dotnetcore 3.1 sdk
   apt:
     name: dotnet-sdk-3.1
     state: present
-  when: ansible_distribution == "debian"
+  when: ansible_distribution == "Debian"
+
+- name: Install Spotify
+  apt:
+    name: spotify-client
+    state: present
+  when: ansible_distribution == "Debian"
