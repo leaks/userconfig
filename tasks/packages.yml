@@ -1,15 +1,25 @@
 ---
+
 - name: Install packages
   apt:
-    state: latest
+    state: present
     name:
       - vim
       - tmux
+      - krb5-user
+  when: ansible_distribution == "debian"
 
-- name: Add Microst gpg key
+- name: Add Microsoft gpg key
   apt_key:
-   url: "https://packages.microsoft.com/keys/microsoft.asc"
-   state: present
+  url: "https://packages.microsoft.com/keys/microsoft.asc"
+  state: present
+  when: ansible_distribution == "debian"
+
+- name: Add Spotify gpg key
+  apt_key:
+  url: "https://download.spotify.com/debian/pubkey.gpg"
+  state: present
+  when: ansible_distribution == "debian"
 
 - name: Add Teams repo
   apt_repository:
@@ -17,13 +27,15 @@
     filename: teams
     state: present
     update_cache: yes
+  when: ansible_distribution == "debian"
 
 - name: Add Microsoft repo
   apt_repository:
-    repo: 'deb [arch=amd64,arm64,armhf] https://packages.microsoft.com/debian/10/prod buster main'
+    repo: 'deb [arch=amd64] https://packages.microsoft.com/debian/10/prod buster main'
     filename: microsoft-prod
     state: present
     update_cache: yes
+  when: ansible_distribution == "debian"
 
 - name: Add vscode repo
   apt_repository:
@@ -31,28 +43,36 @@
     filename: vscode
     state: present
     update_cache: yes
+  when: ansible_distribution == "debian"
+
+- name: Add Spotify repo
+  apt_repository:
+    repo: 'deb http://repository.spotify.com stable non-free'
+    filename: spotify
+    state: present
+    update_cache: yes
+  when: ansible_distribution == "debian"
 
 - name: Install Teams
   apt:
     name: teams
-    state: latest
+    state: present
+  when: ansible_distribution == "debian"
 
 - name: Install powershell 7
   apt:
     name: powershell
-    state: latest
+    state: present
+  when: ansible_distribution == "debian"
 
 - name: Install vscode
   apt:
     name: code
-    state: latest
+    state: present
+  when: ansible_distribution == "debian"
 
 - name: Install dotnetcore 3.1 sdk
   apt:
     name: dotnet-sdk-3.1
-    state: latest
-
-- name: Install Kerberos User tools
-  apt:
-    name: krb5-user
-    state: latest
+    state: present
+  when: ansible_distribution == "debian"
